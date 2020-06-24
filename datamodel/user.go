@@ -1,18 +1,11 @@
 package datamodel
 
-import (
-	"fmt"	
-	singleton "../singleton"
-)
-type User struct{
+//User account
+type User struct {
 	Name, Email, Password string
 }
 
-func DBCheckWrite (entry *User) (bool, error){
-
-	singleton.Print()
-	// db.NewRecord(entry) 
-	// db.Create(&entry)
-	fmt.Printf("here")
-	return false , nil
+//return table name
+func (user User) TableName() string {
+	return "accounts"
 }

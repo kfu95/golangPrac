@@ -1,23 +1,30 @@
 package singleton
 
 import (
-	_ "github.com/jinzhu/gorm"
 	"fmt"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+
+	datamodel "../datamodel"
+	"github.com/jinzhu/gorm"
 )
 
-func Print(){
-	fmt.Printf("lol")
-}
+var connection gorm.DB
 
-var conn *db.DB.Connection
-
-// SetDB sets the DB Singleton
-func SetDB(val *db.Connection) {
-	conn = val
+//SetDB sets the DB Singleton
+func SetDB(val *gorm.DB) {
+	connection = *val
 }
 
 // DB returns the DB Singleton
-func DB() *db.Connection {
-	return conn
+func DB() *gorm.DB {
+	return &connection
+}
+
+//DBCheckWrite will write into db what needes to be done is write into the db.
+func DBCheckWrite(entry *datamodel.User) (bool, error) {
+
+	connection.Create(&entry)
+	// singleton.NewRecord(entry)
+	// db.Create(&entry)
+	fmt.Printf("here")
+	return false, nil
 }
