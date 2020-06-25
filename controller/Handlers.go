@@ -40,13 +40,13 @@ func RegisterPageHandler(response http.ResponseWriter, request *http.Request) {
 
 // RegisterHandler handles registering a new user
 func RegisterHandler(response http.ResponseWriter, request *http.Request) {
-	name := request.FormValue("name")
+	name := request.FormValue("username")
 	email := request.FormValue("email")
 	pass := request.FormValue("password")
 	passCon := request.FormValue("confirmPassword")
 
 	fmt.Printf("username is: %s \n password is:  %s \n passwordConfirmed is: %s \n email is: %s \n ", name, pass, passCon, email)
-	aUser := datamodel.User{name, email, pass}
+	aUser := datamodel.User{Name: name, Email: email, Password: pass}
 	works, err := singleton.DBCheckWrite(&aUser)
 	fmt.Printf("does it work %t", works)
 	if err != nil {
