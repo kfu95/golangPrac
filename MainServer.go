@@ -29,6 +29,7 @@ func main() {
 	router.HandleFunc("/login", controller.LoginHandler).Methods("POST")
 	router.HandleFunc("/register", controller.RegisterPageHandler).Methods("GET")
 	router.HandleFunc("/register", controller.RegisterHandler).Methods("POST")
+	router.HandleFunc("/home", controller.HomePageHandler).Methods("GET")
 	//router.HandleFunc("/logout",controller.LogoutHandler).Methods("POST")
 
 	http.Handle("/", router)

@@ -16,6 +16,11 @@ func MainPageHandler(response http.ResponseWriter, request *http.Request) {
 	var body, _ = helpers.LoadFile("templates/index.html")
 	fmt.Fprintf(response, body)
 }
+// HomePageHandler handles the main page after logging in
+func HomePageHandler(response http.ResponseWriter, request *http.Request){
+	var body, _ = helpers.LoadFile("templates/homepage.html")
+	fmt.Fprintf(response,body)
+}
 
 // LoginPageHandler prints out login.html
 func LoginPageHandler(response http.ResponseWriter, request *http.Request) {
@@ -29,7 +34,7 @@ func LoginHandler(response http.ResponseWriter, request *http.Request) {
 	pass := request.FormValue("password")
 
 	fmt.Printf("username is:  %s \n password is:  %s  \n", name, pass)
-	http.Redirect(response, request, "/", 302)
+	http.Redirect(response, request, "/home", 302)
 }
 
 // RegisterPageHandler handles the register page load

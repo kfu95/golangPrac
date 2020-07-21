@@ -5,7 +5,7 @@ type User struct {
 	Name, Email, Password string
 }
 
-//return table name
+//TableName returns table name
 func (user User) TableName() string {
 	return "accounts"
 }
