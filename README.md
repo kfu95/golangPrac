@@ -11,3 +11,4 @@ Also design backend
 Set up continuous streaming of one stock price. 
 "https://iexcloud.io"Data provided by IEX Cloud
 
+Try to turn into SPA
